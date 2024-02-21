@@ -19,7 +19,7 @@ jobs:
       - run: git clone https://github.com/emifuge/labo2-frontend.git && git clone https://github.com/emifuge/labo2-backend.git
       - run: cd labo2-frontend/3w5-h24-tp2-frontend && npm install
       - run: cd labo2-frontend/3w5-h24-tp2-frontend && npm run build
-      - run: mkdir -p labo2-backend/public && cp -rT labo2-frontend/build labo2-backend/public
+      - run: mkdir -p labo2-backend/public && cp -rT labo2-frontend/3w5-h24-tp2-frontend labo2-backend/public
       - persist_to_workspace:
           root: .
           paths:
