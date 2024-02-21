@@ -12,8 +12,8 @@ jobs:
           name: Clone backend repository and run tests
           command: |
             git clone https://github.com/emifuge/labo2-backend.git 
-            cd labo2-backend && npm install
-            cd labo2-backend && npm test
+            cd labo2-backend/3w5-h24-tp2-backend && npm install
+            cd labo2-backend/3w5-h24-tp2-backend && npm test
 
   integrationFrontend:
     docker:
