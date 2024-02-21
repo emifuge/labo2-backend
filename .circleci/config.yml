@@ -6,18 +6,15 @@ orbs:
 jobs:
   checkoutEtTests:
     docker:
-      - image: cimg/node:14.17.0
+      - image: cimg/node:20.8.1
     steps:
-      - run:
-          name: Clone backend repository and run tests
-          command: |
-            git clone https://github.com/emifuge/labo2-backend.git 
-            cd labo2-backend/3w5-h24-tp2-backend && npm install
-            cd labo2-backend/3w5-h24-tp2-backend && npm test
+      - run: git clone https://github.com/emifuge/labo2-backend.git
+      - run: cd labo2-backend && npm install
+      - run: cd labo2-backend && npm test
 
   integrationFrontend:
     docker:
-      - image: cimg/node:14.17.0
+      - image: cimg/node:20.8.1
     steps:
       - run:
           name: Clone frontend and backend repositories
@@ -40,7 +37,7 @@ jobs:
 
   deploiement:
     docker:
-      - image: cimg/node:14.17.0
+      - image: cimg/node:20.8.1
     steps:
       - attach_workspace:
           at: .
