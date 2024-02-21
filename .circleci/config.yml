@@ -16,20 +16,10 @@ jobs:
     docker:
       - image: cimg/node:20.8.1
     steps:
-      - run:
-          name: Clone frontend and backend repositories
-          command: |
-            git clone https://github.com/emifuge/labo2-frontend.git && 
-            git clone https://github.com/emifuge/labo2-backend.git
-      - run:
-          name: Install frontend dependencies and build
-          command: |
-            cd labo2-frontend/3w5-h24-tp2-frontend && npm install 
-            cd labo2-frontend/3w5-h24-tp2-frontend && npm run build
-      - run:
-          name: Prepare backend and copy build from frontend
-          command: |
-            mkdir -p labo2-backend/3w5-h24-tp2-backend/public && cp -rT labo2-frontend/3w5-h24-tp2-frontend/build labo2-backend/3w5-h24-tp2-backend/public
+      - run: git clone https://github.com/emifuge/labo2-frontend.git && git clone https://github.com/emifuge/labo2-backend.git
+      - run: cd labo2-frontend && npm install
+      - run: cd labo2-frontend && npm run build
+      - run: mkdir -p labo2-backend/public && cp -rT labo2-frontend/build labo2-backend/public
       - persist_to_workspace:
           root: .
           paths:
@@ -41,9 +31,7 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-      - run:
-          name: Show directory structure as if ready for AWS deployment
-          command: ls -Rl
+      - run: ls -Rl
 
 workflows:
   build_and_deploy:
